@@ -19,6 +19,7 @@ use Spryker\Zed\Development\Communication\Console\RemoveGlueBackendIdeAutoComple
 use Spryker\Zed\Development\Communication\Console\RemoveIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\RemoveServiceIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\RemoveZedIdeAutoCompletionConsole;
+use Spryker\Zed\DocumentationGeneratorRestApi\Communication\Console\GenerateRestApiDocumentationConsole;
 use Spryker\Zed\Kernel\Communication\Console\ResolvableClassCacheConsole;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Log\Communication\Console\DeleteLogFilesConsole;
@@ -105,6 +106,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new RemoveServiceIdeAutoCompletionConsole();
             $commands[] = new GenerateIdeAutoCompletionConsole();
             $commands[] = new RemoveIdeAutoCompletionConsole();
+            $commands[] = new GenerateRestApiDocumentationConsole();
         }
 
         return $commands;
