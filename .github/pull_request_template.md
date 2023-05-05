@@ -1,8 +1,7 @@
-<!---
+#### Overview
 
-# Create a PR template
+- Ticket: URL_HERE
 
-NOTE: Replace this block with your actual PR template
+###### Change log
 
--->
-
+{Relevant changes for application go here.}

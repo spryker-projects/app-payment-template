@@ -5,5 +5,5 @@ $jobs[] = [
     'schedule' => '*/1 * * * *',
     'enable' => true,
     'run_on_non_production' => true,
-    'stores' => ['DE'],
+    'stores' => ['GLOBAL'],
 ];

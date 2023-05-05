@@ -29,19 +29,19 @@ regions:
     EU:
         services:
             database:
-                database: eu-docker
+                database: global-docker
                 username: spryker
                 password: secret
 
         stores:
-            DE:
+            GLOBAL:
                 services:
                     broker:
-                        namespace: de-docker
+                        namespace: global-docker
                     key_value_store:
                         namespace: 1
                     search:
-                        namespace: de_search
+                        namespace: global_search
 groups:
     EU:
         region: EU
@@ -49,8 +49,8 @@ groups:
             glue_backend_eu:
                 application: glue-backend
                 endpoints:
-                    glue-backend.de.spryker.local:
-                        store: DE
+                    glue-backend.spryker.local:
+                        store: GLOBAL
 
 services:
     database:
@@ -115,7 +115,7 @@ docker:
             enabled: false
 
     testing:
-        store: DE
+        store: GLOBAL
 
     mount:
         baked:

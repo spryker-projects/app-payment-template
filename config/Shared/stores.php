@@ -2,7 +2,7 @@
 
 $stores = [];
 
-$stores['DE'] = [
+$stores['GLOBAL'] = [
     // different contexts
     'contexts' => [
         // shared settings for all contexts
@@ -28,35 +28,14 @@ $stores['DE'] = [
         ],
     ],
     'locales' => [
-        // first entry is default
         'en' => 'en_US',
         'de' => 'de_DE',
     ],
     // first entry is default
-    'countries' => ['DE', 'AT', 'NO', 'CH', 'ES', 'GB'],
+    'countries' => ['DE'],
     // internal and shop
     'currencyIsoCode' => 'EUR',
-    'currencyIsoCodes' => ['EUR', 'CHF'],
-    'queuePools' => [
-        'synchronizationPool' => [
-            'AT-connection',
-            'DE-connection',
-        ],
-    ],
-    'storesWithSharedPersistence' => ['AT'],
+    'currencyIsoCodes' => ['EUR'],
 ];
-
-$stores['AT'] = [
-        'storesWithSharedPersistence' => ['DE'],
-    ] + $stores['DE'];
-
-$stores['US'] = [
-        'queuePools' => [
-            'synchronizationPool' => [
-                'US-connection',
-            ],
-        ],
-        'storesWithSharedPersistence' => [],
-    ] + $stores['DE'];
 
 return $stores;
