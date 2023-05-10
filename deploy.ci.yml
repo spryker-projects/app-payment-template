@@ -72,7 +72,7 @@ services:
             password: 'secret'
     search:
         engine: elastic
-        version: 7.10
+        version: '7.10'
     scheduler:
         engine: jenkins
     mail_catcher:
