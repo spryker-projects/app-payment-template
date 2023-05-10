@@ -1,6 +1,6 @@
 {
-    "name": "spryker/mini-framework",
-    "description": "Spryker Mini-Framework",
+    "name": "spryker-projects/app-payment-template",
+    "description": "Spryker Payment Template PBC",
     "license": "MIT",
     "minimum-stability": "dev",
     "prefer-stable": true,

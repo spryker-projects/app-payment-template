@@ -77,9 +77,6 @@ jobs:
             -   name: Generate autocompletion files
                 run: vendor/bin/console dev:ide-auto-completion:generate
 
-            -   name: Generate rest API documentation
-                run: vendor/bin/console rest-api:generate:documentation
-
             -   name: Validate propel files
                 run: |
                     vendor/bin/console propel:schema:validate
