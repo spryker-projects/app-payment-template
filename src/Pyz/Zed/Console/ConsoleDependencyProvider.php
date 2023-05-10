@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Console;
 
+use SecurityChecker\Command\SecurityCheckerCommand;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\Development\Communication\Console\GenerateClientIdeAutoCompletionConsole;
