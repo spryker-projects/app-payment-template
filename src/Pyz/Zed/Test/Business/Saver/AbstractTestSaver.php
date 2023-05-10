@@ -63,13 +63,13 @@ abstract class AbstractTestSaver implements TestSaverInterface
     }
 
     /**
-     * @param \Generated\Shared\Transfer\TestTransfer $test
+     * @param \Generated\Shared\Transfer\TestTransfer $testTransfer
      * @param \Generated\Shared\Transfer\TestCollectionResponseTransfer $testCollectionResponseTransfer
      *
      * @return \Generated\Shared\Transfer\TestCollectionResponseTransfer
      */
     abstract protected function saveTestEntity(
-        TestTransfer $test,
+        TestTransfer $testTransfer,
         TestCollectionResponseTransfer $testCollectionResponseTransfer
     ): TestCollectionResponseTransfer;
 }

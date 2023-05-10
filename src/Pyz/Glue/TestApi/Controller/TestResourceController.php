@@ -36,20 +36,20 @@ class TestResourceController extends AbstractBackendApiController
         $testCriteriaTransfer->setPagination($glueRequestTransfer->getPagination());
         $testCriteriaTransfer->setSortCollection($glueRequestTransfer->getSortings());
 
-        $conditionsTransfer = new TestConditionsTransfer();
+        $testConditionsTransfer = new TestConditionsTransfer();
         if (isset($glueRequestTransfer->getQueryFields()['filter'])) {
             foreach ($glueRequestTransfer->getQueryFields()['filter'] as $name => $value) {
                 if ($name === 'name') {
-                    $conditionsTransfer->setNames(explode(',', $value));
+                    $testConditionsTransfer->setNames(explode(',', $value));
                 }
 
                 if ($name === 'id') {
-                    $conditionsTransfer->addTestId($value);
+                    $testConditionsTransfer->addTestId($value);
                 }
             }
         }
 
-        $testCriteriaTransfer->setTestConditions($conditionsTransfer);
+        $testCriteriaTransfer->setTestConditions($testConditionsTransfer);
         $testCollectionTransfer = $this->getFactory()->getTestFacade()->getTestCollection($testCriteriaTransfer);
 
         $glueResponseTransfer = new GlueResponseTransfer();
@@ -79,14 +79,14 @@ class TestResourceController extends AbstractBackendApiController
 
         $glueResponseTransfer = new GlueResponseTransfer();
         if ((array)$testCollectionTransfer->getTests()) {
-            $resourceTransfer = new GlueResourceTransfer();
+            $glueResourceTransfer = new GlueResourceTransfer();
             /** @phpstan-var \Generated\Shared\Transfer\TestTransfer */
             $testTransfer = $testCollectionTransfer->getTests()[0];
-            $resourceTransfer->setAttributes($testTransfer);
-            $resourceTransfer->setId((string)$testTransfer->getId());
-            $resourceTransfer->setType('test');
+            $glueResourceTransfer->setAttributes($testTransfer);
+            $glueResourceTransfer->setId((string)$testTransfer->getId());
+            $glueResourceTransfer->setType('test');
 
-            $glueResponseTransfer->addResource($resourceTransfer);
+            $glueResponseTransfer->addResource($glueResourceTransfer);
 
             return $glueResponseTransfer;
         }
@@ -158,14 +158,14 @@ class TestResourceController extends AbstractBackendApiController
     {
         $glueResponseTransfer = new GlueResponseTransfer();
         if (!(array)$testCollectionResponseTransfer->getErrors()) {
-            $resourceTransfer = new GlueResourceTransfer();
+            $glueResourceTransfer = new GlueResourceTransfer();
             /** @phpstan-var \Generated\Shared\Transfer\TestTransfer */
             $testTransfer = $testCollectionResponseTransfer->getTests()->offsetGet(0);
-            $resourceTransfer->setAttributes($testTransfer);
-            $resourceTransfer->setId((string)$testTransfer->getId());
-            $resourceTransfer->setType('test');
+            $glueResourceTransfer->setAttributes($testTransfer);
+            $glueResourceTransfer->setId((string)$testTransfer->getId());
+            $glueResourceTransfer->setType('test');
 
-            $glueResponseTransfer->addResource($resourceTransfer);
+            $glueResponseTransfer->addResource($glueResourceTransfer);
 
             return $glueResponseTransfer;
         }

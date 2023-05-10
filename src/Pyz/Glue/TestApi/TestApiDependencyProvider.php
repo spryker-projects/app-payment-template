@@ -25,9 +25,8 @@ class TestApiDependencyProvider extends AbstractBundleDependencyProvider
     public function provideBackendDependencies(Container $container): Container
     {
         $container = parent::provideBackendDependencies($container);
-        $container = $this->addTestFacade($container);
 
-        return $container;
+        return $this->addTestFacade($container);
     }
 
     /**

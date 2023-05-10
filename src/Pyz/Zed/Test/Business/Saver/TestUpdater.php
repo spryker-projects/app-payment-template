@@ -15,19 +15,21 @@ use RuntimeException;
 class TestUpdater extends AbstractTestSaver
 {
     /**
-     * @param \Generated\Shared\Transfer\TestTransfer $test
+     * @param \Generated\Shared\Transfer\TestTransfer $testTransfer
      * @param \Generated\Shared\Transfer\TestCollectionResponseTransfer $testCollectionResponseTransfer
      *
      * @throws \RuntimeException
      *
      * @return \Generated\Shared\Transfer\TestCollectionResponseTransfer
      */
-    protected function saveTestEntity(TestTransfer $test, TestCollectionResponseTransfer $testCollectionResponseTransfer): TestCollectionResponseTransfer
-    {
-        $existingTestEntity = SpyTestQuery::create()->findOneByIdTest($test->getIdOrFail());
+    protected function saveTestEntity(
+        TestTransfer $testTransfer,
+        TestCollectionResponseTransfer $testCollectionResponseTransfer
+    ): TestCollectionResponseTransfer {
+        $existingTestEntity = SpyTestQuery::create()->findOneByIdTest($testTransfer->getIdOrFail());
 
         if ($existingTestEntity) {
-            $existingTestEntity->setName($test->getNameOrFail());
+            $existingTestEntity->setName($testTransfer->getNameOrFail());
             $existingTestEntity->save();
 
             $testCollectionResponseTransfer->addTest(
@@ -37,6 +39,6 @@ class TestUpdater extends AbstractTestSaver
             return $testCollectionResponseTransfer;
         }
 
-        throw new RuntimeException('entity with id ' . $test->getId() . 'is not found');
+        throw new RuntimeException('entity with id ' . $testTransfer->getId() . 'is not found');
     }
 }

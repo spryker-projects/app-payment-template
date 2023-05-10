@@ -14,15 +14,17 @@ use Orm\Zed\Test\Persistence\SpyTest;
 class TestCreator extends AbstractTestSaver
 {
     /**
-     * @param \Generated\Shared\Transfer\TestTransfer $test
+     * @param \Generated\Shared\Transfer\TestTransfer $testTransfer
      * @param \Generated\Shared\Transfer\TestCollectionResponseTransfer $testCollectionResponseTransfer
      *
      * @return \Generated\Shared\Transfer\TestCollectionResponseTransfer
      */
-    protected function saveTestEntity(TestTransfer $test, TestCollectionResponseTransfer $testCollectionResponseTransfer): TestCollectionResponseTransfer
-    {
+    protected function saveTestEntity(
+        TestTransfer $testTransfer,
+        TestCollectionResponseTransfer $testCollectionResponseTransfer
+    ): TestCollectionResponseTransfer {
         $testEntity = new SpyTest();
-        $testEntity->setName($test->getNameOrFail());
+        $testEntity->setName($testTransfer->getNameOrFail());
         $testEntity->save();
 
         $testCollectionResponseTransfer->addTest(
