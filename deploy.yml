@@ -39,8 +39,8 @@ regions:
                     search:
                         namespace: global_search
 groups:
-    EU:
-        region: EU
+    GLOBAL:
+        region: GLOBAL
         applications:
             glue_backend_eu:
                 application: glue-backend

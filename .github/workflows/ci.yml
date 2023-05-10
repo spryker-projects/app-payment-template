@@ -92,10 +92,10 @@ jobs:
                 run: vendor/bin/phpcs -p
 
             -   name: Run Architecture rules
-                run: vendor/bin/phpmd src/App text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
+                run: vendor/bin/phpmd src/Pyz text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2
 
             -   name: Run PHPStan
-                run: vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/App --debug
+                run: vendor/bin/phpstan analyze -l 5 -c phpstan.neon src/Pyz --debug
 
             -   name: Run Security check
                 run: vendor/bin/console security:check
