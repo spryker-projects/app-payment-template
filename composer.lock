@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "84a31dec827d852754f4dad44c18e48e",
+    "content-hash": "7aa2224055dd041267b6162996e36191",
     "packages": [
         {
             "name": "brick/math",
@@ -13607,6 +13607,54 @@
                 "source": "https://github.com/spryker-sdk/phpstan-spryker"
             },
             "time": "2021-12-10T14:07:19+00:00"
+        },
+        {
+            "name": "spryker-sdk/security-checker",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-sdk/security-checker.git",
+                "reference": "619c9c636590e0bef836f1c9ab1203ac9a66c46c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/security-checker/zipball/619c9c636590e0bef836f1c9ab1203ac9a66c46c",
+                "reference": "619c9c636590e0bef836f1c9ab1203ac9a66c46c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "symfony/console": "^4.0.0 || ^5.0.0 || ^6.0.0",
+                "symfony/options-resolver": "^4.0.0 || ^5.0.0 || ^6.0.0",
+                "symfony/process": "^4.0.0 || ^5.0.0 || ^6.0.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.2.0",
+                "slevomat/coding-standard": "^6.2",
+                "spryker/code-sniffer": "^0.15.6",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SecurityChecker\\": "src/SecurityChecker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "A security checker for your composer.lock",
+            "support": {
+                "issues": "https://github.com/spryker-sdk/security-checker/issues",
+                "source": "https://github.com/spryker-sdk/security-checker/tree/0.2.0"
+            },
+            "time": "2023-04-24T11:24:18+00:00"
         },
         {
             "name": "spryker/architecture-sniffer",
