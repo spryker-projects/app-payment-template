@@ -25,9 +25,6 @@ sections:
         generate-transfer-databuilders:
             command: 'vendor/bin/console transfer:databuilder:generate'
 
-        rest-api-generate-documentation:
-            command: 'vendor/bin/console rest-api:generate:documentation'
-
     init-storages-per-region:
         propel-copy-schema:
             command: 'vendor/bin/console propel:schema:copy'
