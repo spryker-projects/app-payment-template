@@ -107,6 +107,10 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new GenerateIdeAutoCompletionConsole();
             $commands[] = new RemoveIdeAutoCompletionConsole();
             $commands[] = new GenerateRestApiDocumentationConsole();
+
+            if (class_exists(SecurityCheckerCommand::class)) {
+                $commands[] = new SecurityCheckerCommand();
+            }
         }
 
         return $commands;
