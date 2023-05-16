@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2022-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\DataImport;
@@ -29,7 +29,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideBusinessLayerDependencies(Container $container)
+    public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
 
@@ -45,7 +45,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addCurrencyFacade(Container $container)
+    protected function addCurrencyFacade(Container $container): Container
     {
         $container->set(static::FACADE_CURRENCY, function (Container $container) {
             return $container->getLocator()->currency()->facade();
@@ -59,7 +59,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addStoreFacade(Container $container)
+    protected function addStoreFacade(Container $container): Container
     {
         $container->set(static::FACADE_STORE, function (Container $container) {
             return $container->getLocator()->store()->facade();

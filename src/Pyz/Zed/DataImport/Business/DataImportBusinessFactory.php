@@ -1,33 +1,21 @@
 <?php
 
 /**
- * Copyright © 2022-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\DataImport\Business;
 
 use Generated\Shared\Transfer\DataImportConfigurationActionTransfer;
-use Pyz\Zed\DataImport\Business\Model\Country\Repository\CountryRepository;
-use Pyz\Zed\DataImport\Business\Model\Currency\CurrencyWriterStep;
-use Pyz\Zed\DataImport\Business\Model\DataImporterConditional;
-use Pyz\Zed\DataImport\Business\Model\DataImporterDataSetWriterAwareConditional;
-use Pyz\Zed\DataImport\Business\Model\Glossary\GlossaryWriterStep;
-use Pyz\Zed\DataImport\Business\Model\Locale\LocaleNameToIdLocaleStep;
-use Pyz\Zed\DataImport\Business\Model\Locale\Repository\LocaleRepository;
-use Pyz\Zed\DataImport\Business\Model\PropelExecutor;
-use Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface;
 use Pyz\Zed\DataImport\Business\Model\Store\StoreReader;
 use Pyz\Zed\DataImport\Business\Model\Store\StoreWriterStep;
 use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\DataImport\DataImportDependencyProvider;
 use Spryker\Shared\Kernel\Store;
-use Spryker\Zed\Currency\Business\CurrencyFacadeInterface;
 use Spryker\Zed\DataImport\Business\DataImportBusinessFactory as SprykerDataImportBusinessFactory;
 use Spryker\Zed\DataImport\Business\Model\DataImporterInterface;
-use Spryker\Zed\DataImport\Business\Model\DataReader\DataReaderInterface;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface;
-use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 /**
  * @method \Pyz\Zed\DataImport\DataImportConfig getConfig()
@@ -57,8 +45,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      *
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
-    protected function createStoreImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
+    protected function createStoreImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+    ): DataImporterInterface {
         /** @var \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface|\Spryker\Zed\DataImport\Business\Model\DataImporterInterface $dataImporter */
         $dataImporter = $this->createDataImporter(
             $dataImportConfigurationActionTransfer->getDataEntity(),

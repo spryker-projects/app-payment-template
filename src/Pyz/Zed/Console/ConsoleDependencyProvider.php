@@ -11,6 +11,10 @@ use SecurityChecker\Command\SecurityCheckerCommand;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
+use Spryker\Zed\Development\Communication\Console\CodeArchitectureSnifferConsole;
+use Spryker\Zed\Development\Communication\Console\CodePhpMessDetectorConsole;
+use Spryker\Zed\Development\Communication\Console\CodePhpstanConsole;
+use Spryker\Zed\Development\Communication\Console\CodeStyleSnifferConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateClientIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateGlueBackendIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateIdeAutoCompletionConsole;
@@ -111,6 +115,10 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new GenerateIdeAutoCompletionConsole();
             $commands[] = new RemoveIdeAutoCompletionConsole();
             $commands[] = new GenerateRestApiDocumentationConsole();
+            $commands[] = new CodeStyleSnifferConsole();
+            $commands[] = new CodeArchitectureSnifferConsole();
+            $commands[] = new CodePhpstanConsole();
+            $commands[] = new CodePhpMessDetectorConsole();
 
             if (class_exists(SecurityCheckerCommand::class)) {
                 $commands[] = new SecurityCheckerCommand();

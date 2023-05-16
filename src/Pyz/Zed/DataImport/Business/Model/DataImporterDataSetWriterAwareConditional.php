@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2022-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\DataImport\Business\Model;
@@ -24,7 +24,7 @@ class DataImporterDataSetWriterAwareConditional extends DataImporterDataSetWrite
      *
      * @return void
      */
-    public function setDataSetCondition(DataSetConditionInterface $dataSetCondition)
+    public function setDataSetCondition(DataSetConditionInterface $dataSetCondition): void
     {
         $this->dataSetCondition = $dataSetCondition;
     }
