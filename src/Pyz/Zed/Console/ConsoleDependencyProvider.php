@@ -10,6 +10,7 @@ namespace Pyz\Zed\Console;
 use SecurityChecker\Command\SecurityCheckerCommand;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
+use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateClientIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateGlueBackendIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateIdeAutoCompletionConsole;
@@ -85,6 +86,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DeleteLogFilesConsole(),
 
             new ResolvableClassCacheConsole(),
+
+            new DataImportConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();

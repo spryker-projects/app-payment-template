@@ -64,7 +64,6 @@ $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
 $config[KernelConstants::DOMAIN_WHITELIST] = array_filter(explode(',', getenv('SPRYKER_TRUSTED_HOSTS') ?: ''));
 $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
 
-
 $config[LogConstants::LOG_SANITIZE_FIELDS] = [
     'password',
 ];
