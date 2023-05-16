@@ -22,7 +22,7 @@ assets:
             level: 5
 
 regions:
-    EU:
+    GLOBAL:
         services:
             database:
                 database: global-docker

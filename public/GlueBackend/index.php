@@ -1,6 +1,6 @@
 <?php
 
-use Pyz\Glue\GlueApplication\Bootstrap\GlueBackendApiBootstrap;
+use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\BackendApiGlueApplicationBootstrapPlugin;
 use Spryker\Shared\Config\Application\Environment;
 use Spryker\Shared\ErrorHandler\ErrorHandlerEnvironment;
 
@@ -14,7 +14,7 @@ Environment::initialize();
 $errorHandlerEnvironment = new ErrorHandlerEnvironment();
 $errorHandlerEnvironment->initialize();
 
-$bootstrap = new GlueBackendApiBootstrap();
+$bootstrap = new \Spryker\Glue\GlueApplication\Bootstrap\GlueBootstrap();
 $bootstrap
-    ->boot()
+    ->boot([BackendApiGlueApplicationBootstrapPlugin::class])
     ->run();

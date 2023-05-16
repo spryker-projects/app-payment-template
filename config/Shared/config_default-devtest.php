@@ -13,7 +13,7 @@ use Spryker\Shared\Propel\PropelConstants;
 // ############################## TESTING IN DEVVM ############################
 // ############################################################################
 
-$domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
+$domain = getenv('VM_PROJECT') ?: 'app-payment-template';
 $storeLowerCase = strtolower(APPLICATION_STORE);
 $stores = array_combine(Store::getInstance()->getAllowedStores(), Store::getInstance()->getAllowedStores());
 $glueHost = sprintf('glue-test.de.%s.local', $domain);
@@ -55,8 +55,6 @@ require 'common/config_logs-files.php';
 require 'common/config_logs-ci-errors.php';
 
 // >>> DATABASE
-$config[PropelConstants::ZED_DB_USERNAME] = 'devtest';
-$config[PropelConstants::ZED_DB_PASSWORD] = 'mate20mg';
 $config[PropelConstants::ZED_DB_DATABASE] = sprintf('%s_devtest_zed', APPLICATION_CODE_BUCKET);
 
 // ---------- LOGGER

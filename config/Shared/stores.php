@@ -19,7 +19,6 @@ $stores['GLOBAL'] = [
             ],
         ],
         // settings for contexts (overwrite shared)
-        'yves' => [],
         'zed' => [
             'dateFormat' => [
                 // short date (2012-12-28)

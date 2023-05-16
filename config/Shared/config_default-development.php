@@ -15,8 +15,6 @@ use Spryker\Shared\PropelOrm\PropelOrmConstants;
 // ############################## DEVELOPMENT IN DEVVM ########################
 // ############################################################################
 
-$domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
-$storeLowerCase = strtolower(APPLICATION_STORE);
 $stores = array_combine(Store::getInstance()->getAllowedStores(), Store::getInstance()->getAllowedStores());
 
 // ----------------------------------------------------------------------------
@@ -51,9 +49,6 @@ require 'common/config_services-devvm.php';
 require 'common/config_logs-files.php';
 
 // >>> DATABASE
-$config[PropelConstants::ZED_DB_USERNAME] = 'development';
-$config[PropelConstants::ZED_DB_PASSWORD] = 'mate20mg';
-$config[PropelConstants::ZED_DB_DATABASE] = ''; // Specified in codebucket specific configs: config_default-development_*.php
 $config[PropelOrmConstants::PROPEL_SHOW_EXTENDED_EXCEPTION] = true;
 
 $config[LogConstants::LOG_LEVEL] = Logger::INFO;

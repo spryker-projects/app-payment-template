@@ -19,8 +19,6 @@ settings:
 
 coverage:
     enabled: true
-    remote: true
-    c3_url: 'http://backoffice.de.spryker.local'
     whitelist: { include: ['src/Pyz/*.php'] }
 
 extensions:

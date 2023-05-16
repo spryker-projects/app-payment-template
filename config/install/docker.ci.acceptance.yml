@@ -6,6 +6,7 @@ sections:
     build:
         generate-transfers:
             command: 'vendor/bin/console transfer:generate'
+
         propel-copy-schema:
             command: 'vendor/bin/console propel:schema:copy'
 

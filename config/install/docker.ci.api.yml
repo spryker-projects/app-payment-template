@@ -15,6 +15,7 @@ sections:
 
         generate-entity-transfer:
             command: 'vendor/bin/console transfer:entity:generate'
+
         cache-class-resolver-build:
             command: 'vendor/bin/console cache:class-resolver:build'
 
