@@ -47,62 +47,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         switch ($dataImportConfigurationActionTransfer->getDataEntity()) {
             case DataImportConfig::IMPORT_TYPE_STORE:
                 return $this->createStoreImporter($dataImportConfigurationActionTransfer);
-            case DataImportConfig::IMPORT_TYPE_CURRENCY:
-                return $this->createCurrencyImporter($dataImportConfigurationActionTransfer);
-            case DataImportConfig::IMPORT_TYPE_GLOSSARY:
-                return $this->createGlossaryImporter($dataImportConfigurationActionTransfer);
             default:
                 return null;
         }
-    }
-
-    /**
-     * @param string $importType
-     * @param \Spryker\Zed\DataImport\Business\Model\DataReader\DataReaderInterface $reader
-     *
-     * @return \Pyz\Zed\DataImport\Business\Model\DataImporterConditional
-     */
-    public function createDataImporterConditional($importType, DataReaderInterface $reader)
-    {
-        return new DataImporterConditional($importType, $reader, $this->getGracefulRunnerFacade());
-    }
-
-    /**
-     * @param string $importType
-     * @param \Spryker\Zed\DataImport\Business\Model\DataReader\DataReaderInterface $reader
-     *
-     * @return \Pyz\Zed\DataImport\Business\Model\DataImporterDataSetWriterAwareConditional
-     */
-    public function createDataImporterWriterAwareConditional($importType, DataReaderInterface $reader)
-    {
-        return new DataImporterDataSetWriterAwareConditional($importType, $reader, $this->getGracefulRunnerFacade());
-    }
-
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\PropelExecutorInterface
-     */
-    public function createPropelExecutor(): PropelExecutorInterface
-    {
-        return new PropelExecutor();
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
-     */
-    protected function createCurrencyImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
-        $dataImporter = $this->getCsvDataImporterFromConfig(
-            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
-        );
-
-        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
-        $dataSetStepBroker->addStep(new CurrencyWriterStep());
-
-        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
-
-        return $dataImporter;
     }
 
     /**
@@ -131,76 +78,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
-     */
-    protected function createGlossaryImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer)
-    {
-        $dataImporter = $this->getCsvDataImporterFromConfig(
-            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer),
-        );
-
-        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(GlossaryWriterStep::BULK_SIZE);
-        $dataSetStepBroker
-            ->addStep($this->createLocaleNameToIdStep(GlossaryWriterStep::KEY_LOCALE))
-            ->addStep(new GlossaryWriterStep());
-
-        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
-
-        return $dataImporter;
-    }
-
-    /**
-     * @param string $source
-     * @param string $target
-     *
-     * @return \Pyz\Zed\DataImport\Business\Model\Locale\LocaleNameToIdLocaleStep
-     */
-    protected function createLocaleNameToIdStep(
-        $source = LocaleNameToIdLocaleStep::KEY_SOURCE,
-        $target = LocaleNameToIdLocaleStep::KEY_TARGET
-    ): LocaleNameToIdLocaleStep {
-        return new LocaleNameToIdLocaleStep($source, $target);
-    }
-
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\Locale\Repository\LocaleRepositoryInterface
-     */
-    protected function createLocaleRepository()
-    {
-        return new LocaleRepository();
-    }
-
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\Country\Repository\CountryRepositoryInterface
-     */
-    protected function createCountryRepository()
-    {
-        return new CountryRepository();
-    }
-
-    /**
      * @return \Spryker\Zed\DataImport\Dependency\Facade\DataImportToEventFacadeInterface
      */
     protected function getEventFacade(): DataImportToEventFacadeInterface
     {
         return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_EVENT);
-    }
-
-    /**
-     * @return \Spryker\Zed\Store\Business\StoreFacadeInterface
-     */
-    protected function getStoreFacade(): StoreFacadeInterface
-    {
-        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_STORE);
-    }
-
-    /**
-     * @return \Spryker\Zed\Currency\Business\CurrencyFacadeInterface
-     */
-    protected function getCurrencyFacade(): CurrencyFacadeInterface
-    {
-        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_CURRENCY);
     }
 }

@@ -19,11 +19,6 @@ class DataImportConfig extends SprykerDataImportConfig
     /**
      * @var string
      */
-    public const IMPORT_TYPE_CUSTOMER = 'customer';
-
-    /**
-     * @var string
-     */
     public const IMPORT_TYPE_GLOSSARY = 'glossary';
 
     /**

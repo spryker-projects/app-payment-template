@@ -25,11 +25,6 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     public const FACADE_CURRENCY = 'currency facade';
 
     /**
-     * @var string
-     */
-    public const FACADE_PRICE_PRODUCT = 'FACADE_PRICE_PRODUCT';
-
-    /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return \Spryker\Zed\Kernel\Container
