@@ -33,23 +33,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     {
         $container = parent::provideBusinessLayerDependencies($container);
 
-        $container = $this->addCurrencyFacade($container);
         $container = $this->addStoreFacade($container);
         $container = $this->addUtilEncodingService($container);
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    protected function addCurrencyFacade(Container $container): Container
-    {
-        $container->set(static::FACADE_CURRENCY, function (Container $container) {
-            return $container->getLocator()->currency()->facade();
-        });
 
         return $container;
     }
