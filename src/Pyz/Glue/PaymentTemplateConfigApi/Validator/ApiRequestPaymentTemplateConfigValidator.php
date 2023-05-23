@@ -15,6 +15,7 @@ use Spryker\Service\UtilEncoding\UtilEncodingServiceInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Constraints\Collection;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Required;
 use Symfony\Component\Validator\Constraints\Type;
@@ -84,8 +85,9 @@ class ApiRequestPaymentTemplateConfigValidator implements ApiRequestValidatorInt
         return new Collection([
             'paymentApiKey' => [
                 new Required(),
-                $this->createNotBlankConstraint(PaymentTemplateConfigApiConfig::RESPONSE_MESSAGE_BLANK_ADMIN_API_KEY_FIELD),
-                $this->createTypeStringConstraint(PaymentTemplateConfigApiConfig::RESPONSE_MESSAGE_NOT_STRING_ADMIN_API_KEY_FIELD),
+                $this->createNotBlankConstraint(PaymentTemplateConfigApiConfig::RESPONSE_MESSAGE_BLANK_PAYMENT_API_KEY_FIELD),
+                $this->createTypeStringConstraint(PaymentTemplateConfigApiConfig::RESPONSE_MESSAGE_NOT_STRING_PAYMENT_API_KEY_FIELD),
+                $this->createStringLengthConstraint(PaymentTemplateConfigApiConfig::RESPONSE_MESSAGE_LENGTH_PAYMENT_API_KEY_FIELD),
             ],
         ], null, null, true);
     }
@@ -110,9 +112,22 @@ class ApiRequestPaymentTemplateConfigValidator implements ApiRequestValidatorInt
      */
     protected function createTypeStringConstraint(string $errorMessage): Constraint
     {
-        $notBlank = new Type(['type' => 'string']);
-        $notBlank->message = $errorMessage;
+        $type = new Type(['type' => 'string']);
+        $type->message = $errorMessage;
 
-        return $notBlank;
+        return $type;
+    }
+
+    /**
+     * @param string $errorMessage
+     *
+     * @return \Symfony\Component\Validator\Constraint
+     */
+    protected function createStringLengthConstraint(string $errorMessage): Constraint
+    {
+        $length = new Length(['value' => 10]);
+        $length->exactMessage = $errorMessage;
+
+        return $length;
     }
 }

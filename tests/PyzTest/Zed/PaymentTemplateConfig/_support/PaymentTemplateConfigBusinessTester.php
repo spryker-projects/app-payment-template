@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Zed\Test;
+namespace PyzTest\Zed\PaymentTemplateConfig;
 
 use Codeception\Actor;
 
@@ -23,11 +23,11 @@ use Codeception\Actor;
  * @method void comment($description)
  * @method void pause()
  *
- * @SuppressWarnings(PHPMD)
+ * @method \Pyz\Zed\PaymentTemplateConfig\Business\PaymentTemplateConfigFacade getFacade()
  *
- * @method \Pyz\Zed\Test\Business\TestFacadeInterface getFacade()
+ * @SuppressWarnings(PHPMD)
  */
-class TestBusinessTester extends Actor
+class PaymentTemplateConfigBusinessTester extends Actor
 {
-    use _generated\TestBusinessTesterActions;
+    use _generated\PaymentTemplateConfigBusinessTesterActions;
 }

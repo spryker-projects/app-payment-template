@@ -39,37 +39,17 @@ class PaymentTemplateConfigApiConfig extends AbstractBundleConfig
     /**
      * @var string
      */
-    public const RESPONSE_MESSAGE_BLANK_APPLICATION_ID_FIELD = 'Application ID must not be blank.';
+    public const RESPONSE_MESSAGE_BLANK_PAYMENT_API_KEY_FIELD = 'Payment API Key must not be blank.';
 
     /**
      * @var string
      */
-    public const RESPONSE_MESSAGE_NOT_STRING_APPLICATION_ID_FIELD = 'Application ID must be a string.';
+    public const RESPONSE_MESSAGE_NOT_STRING_PAYMENT_API_KEY_FIELD = 'Payment API Key must be a string.';
 
     /**
      * @var string
      */
-    public const RESPONSE_MESSAGE_BLANK_ADMIN_API_KEY_FIELD = 'Admin API Key must not be blank.';
-
-    /**
-     * @var string
-     */
-    public const RESPONSE_MESSAGE_NOT_STRING_ADMIN_API_KEY_FIELD = 'Admin API Key must be a string.';
-
-    /**
-     * @var string
-     */
-    public const RESPONSE_MESSAGE_BLANK_SEARCH_ONLY_API_KEY_FIELD = 'Search-Only API Key must not be blank.';
-
-    /**
-     * @var string
-     */
-    public const RESPONSE_MESSAGE_NOT_STRING_SEARCH_ONLY_API_KEY_FIELD = 'Search-Only API Key must be a string.';
-
-    /**
-     * @var string
-     */
-    public const RESPONSE_MESSAGE_NOT_BOOLEAN_IS_SEARCH_IN_FRONTEND_ENABLED_FIELD = 'Search In Frontend Enabled must be a boolean.';
+    public const RESPONSE_MESSAGE_LENGTH_PAYMENT_API_KEY_FIELD = 'Payment API Key must be 10 symbols long.';
 
     /**
      * @var string

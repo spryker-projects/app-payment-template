@@ -12,7 +12,6 @@ use Pyz\Glue\PaymentTemplateConfigApi\Plugin\RequestValidator\ApiRequestPaymentT
 use Pyz\Glue\PaymentTemplateConfigApi\Plugin\RequestValidator\ApiRequestStructureValidatorPlugin;
 use Spryker\Glue\Kernel\Backend\AbstractBundleDependencyProvider;
 use Spryker\Glue\Kernel\Backend\Container;
-use Spryker\Glue\Kernel\Backend\Container as GlueBackendContainer;
 
 class PaymentTemplateConfigApiDependencyProvider extends AbstractBundleDependencyProvider
 {
@@ -41,7 +40,7 @@ class PaymentTemplateConfigApiDependencyProvider extends AbstractBundleDependenc
      *
      * @return \Spryker\Glue\Kernel\Backend\Container
      */
-    public function provideBackendDependencies(GlueBackendContainer $container): GlueBackendContainer
+    public function provideBackendDependencies(Container $container): Container
     {
         $container = parent::provideBackendDependencies($container);
 
@@ -58,9 +57,9 @@ class PaymentTemplateConfigApiDependencyProvider extends AbstractBundleDependenc
      *
      * @return \Spryker\Glue\Kernel\Backend\Container
      */
-    protected function addUtilEncodingService(GlueBackendContainer $container): GlueBackendContainer
+    protected function addUtilEncodingService(Container $container): Container
     {
-        $container->set(static::SERVICE_UTIL_ENCODING, function (GlueBackendContainer $container) {
+        $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container) {
             return $container->getLocator()->utilEncoding()->service();
         });
 
@@ -72,9 +71,9 @@ class PaymentTemplateConfigApiDependencyProvider extends AbstractBundleDependenc
      *
      * @return \Spryker\Glue\Kernel\Backend\Container
      */
-    protected function addFacadePaymentTemplateConfig(GlueBackendContainer $container): GlueBackendContainer
+    protected function addFacadePaymentTemplateConfig(Container $container): Container
     {
-        $container->set(static::FACADE_PAYMENT_TEMPLATE_CONFIG, function (GlueBackendContainer $container) {
+        $container->set(static::FACADE_PAYMENT_TEMPLATE_CONFIG, function (Container $container) {
             return $container->getLocator()->paymentTemplateConfig()->facade();
         });
 

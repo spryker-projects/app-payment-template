@@ -15,6 +15,7 @@ use Rector\EarlyReturn\Rector\If_\ChangeAndIfToEarlyReturnRector;
 use Rector\EarlyReturn\Rector\If_\ChangeOrIfReturnToEarlyReturnRector;
 use Rector\EarlyReturn\Rector\Return_\ReturnBinaryAndToEarlyReturnRector;
 use Rector\Naming\Rector\Class_\RenamePropertyToMatchTypeRector;
+use Rector\Naming\Rector\ClassMethod\RenameParamToMatchTypeRector;
 use Rector\Php74\Rector\Closure\ClosureToArrowFunctionRector;
 use Rector\Php74\Rector\Property\TypedPropertyRector;
 use Rector\Set\ValueObject\SetList;
@@ -40,7 +41,9 @@ return static function (RectorConfig $rectorConfig) {
         RemoveUselessReturnTagRector::class,
         ReturnBinaryAndToEarlyReturnRector::class,
         TypedPropertyRector::class,
+        RenameParamToMatchTypeRector::class,
         SimplifyUselessVariableRector::class => [
+            __DIR__ . '/src/Pyz/Glue/*/*DependencyProvider.php',
             __DIR__ . '/src/Pyz/Zed/*/*DependencyProvider.php',
         ],
     ]);
