@@ -42,3 +42,17 @@ docker/sdk up -x
 #Run the entire test suite
 docker/sdk testing codecept run -c codeception.yml
 ```
+
+## Application structure
+
+```
+|src
+|-Pyz
+|--Client
+|---SecretsManager - configuration for secrets provider
+|--Glue
+|---PaymentTemplateConfigApi - private API for application configuration
+|--Shared
+|--Zed
+|---PaymentTemplateConfig - business logic for application configuration data
+```
