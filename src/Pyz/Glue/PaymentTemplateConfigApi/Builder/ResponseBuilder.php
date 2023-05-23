@@ -109,7 +109,7 @@ class ResponseBuilder implements ResponseBuilderInterface
     /**
      * @param \Generated\Shared\Transfer\PaymentTemplateConfigResponseTransfer $paymentTemplateConfigResponseTransfer
      *
-     * @return array<string, mixed>.
+     * @return array<string, mixed>
      */
     protected function getFirstError(PaymentTemplateConfigResponseTransfer $paymentTemplateConfigResponseTransfer): array
     {
