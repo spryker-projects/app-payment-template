@@ -6,7 +6,7 @@
 >
     <transfer name="PaymentTemplateConfig">
         <property name="storeReference" dataBuilderRule="uuid()"/>
-        <property name="paymentApiKey" dataBuilderRule="asciify('**********')"/>
+        <property name="paymentApiKey" dataBuilderRule="lexify('??????????')"/>
     </transfer>
 
     <transfer name="DisconnectParameters">
