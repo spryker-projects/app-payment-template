@@ -1,5 +1,5 @@
 # app-payment-template
-Payment PBC application template
+Payment Application template
 
 [![Build Status](https://github.com/spryker-projects/app-payment-template-suite/workflows/CI/badge.svg)](https://github.com/spryker-projects/app-payment-template/actions?query=workflow%3ACI)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%208.1-8892BF.svg)](https://php.net/)

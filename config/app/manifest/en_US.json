@@ -1,0 +1,53 @@
+{
+    "name": "App Payment Template",
+    "provider": "Spryker",
+    "description": "App Payment Template",
+    "descriptionShort": "App Payment Template",
+    "url": "https://www.spryker.com",
+    "isAvailable": true,
+    "categories": [
+        "PAYMENT"
+    ],
+    "assets": [
+        {
+            "type": "icon",
+            "url": "/assets/img/algolia/logo.png"
+        }
+    ],
+    "resources": [],
+    "pages": {},
+    "labels": [],
+    "businessModels": [
+        "B2C",
+        "B2B",
+        "B2C_MARKETPLACE",
+        "B2B_MARKETPLACE"
+    ],
+    "dependencies": [
+        {
+            "name": "spryker/store",
+            "version": "^1.17.0"
+        }
+    ],
+    "dialogs": {
+        "onSave": {
+            "type": "confirmation",
+            "title": "Proceed saving?",
+            "content": "Saving Payment connection credentials will add new payment method",
+            "buttons": {
+                "ok": "Save",
+                "cancel": "Cancel"
+            }
+        },
+        "onDisconnect": {
+            "type": "confirmation",
+            "title": "Disconnect application?",
+            "content": "Are you sure you want to disconnect this application? Your application settings will be reset.",
+            "buttons": {
+                "ok": "Disconnect",
+                "cancel": "Cancel"
+            }
+        }
+    },
+    "developedBy": "Spryker Systems GmbH"
+}

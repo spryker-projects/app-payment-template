@@ -7,6 +7,7 @@ use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebHtmlErrorRenderer;
+use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\GlueBackendApiApplication\GlueBackendApiApplicationConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
@@ -16,6 +17,7 @@ use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\Scheduler\SchedulerConstants;
 use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConfig;
 use Spryker\Shared\SchedulerJenkins\SchedulerJenkinsConstants;
+use Spryker\Shared\SecretsManagerAws\SecretsManagerAwsConstants;
 use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Propel\PropelConfig;
 
@@ -99,6 +101,8 @@ $config[LogConstants::LOG_ERROR_QUEUE_NAME] = 'error-log-queue';
 
 $config[LogConstants::LOG_LEVEL] = Logger::INFO;
 $config[PropelConstants::LOG_FILE_PATH]
+    = $config[EventConstants::LOG_FILE_PATH]
+    = $config[LogConstants::LOG_FILE_PATH]
     = $config[LogConstants::LOG_FILE_PATH_ZED]
     = $config[LogConstants::LOG_FILE_PATH_GLUE]
     = $config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME]
@@ -131,3 +135,9 @@ $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
 ];
 
 $config[SchedulerJenkinsConstants::JENKINS_TEMPLATE_PATH] = getenv('SPRYKER_JENKINS_TEMPLATE_PATH') ?: null;
+
+// >>> AWS SecretsManagers
+$config[SecretsManagerAwsConstants::SECRETS_MANAGER_AWS_REGION] = getenv('AWS_DEFAULT_REGION') ?: '';
+// can be removed after adding AWS SecretsManagers IAM roles creation in PaaS
+$config[SecretsManagerAwsConstants::SECRETS_MANAGER_AWS_ACCESS_KEY] = getenv('AWS_SECRETS_MANAGER_ACCESS_KEY_ID');
+$config[SecretsManagerAwsConstants::SECRETS_MANAGER_AWS_ACCESS_SECRET] = getenv('AWS_SECRETS_MANAGER_SECRET_ACCESS_KEY');

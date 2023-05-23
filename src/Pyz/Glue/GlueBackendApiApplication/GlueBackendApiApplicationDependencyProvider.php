@@ -7,6 +7,7 @@
 
 namespace Pyz\Glue\GlueBackendApiApplication;
 
+use Pyz\Glue\PaymentTemplateConfigApi\Plugin\RouteProvider\PaymentTemplateConfigApiRouteProviderPlugin;
 use Pyz\Glue\TestApi\Plugin\GlueApplication\TestResource;
 use Spryker\Glue\GlueBackendApiApplication\GlueBackendApiApplicationDependencyProvider as SprykerGlueBackendApiApplicationDependencyProvider;
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\ApplicationIdentifierRequestBuilderPlugin;
@@ -14,7 +15,6 @@ use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\LocaleRequestB
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\RequestCorsValidatorPlugin;
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\ScopeRequestAfterRoutingValidatorPlugin;
 use Spryker\Glue\GlueBackendApiApplication\Plugin\GlueApplication\SecurityHeaderResponseFormatterPlugin;
-use Spryker\Glue\GlueBackendApiApplicationAuthorizationConnector\Plugin\GlueBackendApiApplication\AuthorizationRequestAfterRoutingValidatorPlugin;
 use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 
 class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiApplicationDependencyProvider
@@ -37,7 +37,6 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
         return [
             new RequestCorsValidatorPlugin(),
             new ScopeRequestAfterRoutingValidatorPlugin(),
-            new AuthorizationRequestAfterRoutingValidatorPlugin(),
         ];
     }
 
@@ -69,6 +68,16 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
         return [
             new ApplicationIdentifierRequestBuilderPlugin(),
             new LocaleRequestBuilderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RouteProviderPluginInterface>
+     */
+    protected function getRouteProviderPlugins(): array
+    {
+        return [
+            new PaymentTemplateConfigApiRouteProviderPlugin(),
         ];
     }
 }
