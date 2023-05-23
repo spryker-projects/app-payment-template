@@ -28,7 +28,9 @@ interface PaymentTemplateConfigFacadeInterface
 
     /**
      * Specification:
-     * - Saves the store configs into the DB.
+     * - Saves the application configuration data into the DB.
+     * - Application configuration data is encrypted.
+     * - Encryption key is retrieved from external provider (AWS Secrets Manager by default).
      *
      * @api
      *

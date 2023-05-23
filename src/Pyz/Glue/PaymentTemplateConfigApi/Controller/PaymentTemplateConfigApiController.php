@@ -20,6 +20,11 @@ use Spryker\Glue\Kernel\Controller\AbstractController;
 class PaymentTemplateConfigApiController extends AbstractController
 {
     /**
+     * Specification:
+     * - Is called after app configuration has been saved.
+     * - Performs save of app configuration data on app side.
+     * - Any additional validation of configuration data happens here.
+     *
      * @param \Generated\Shared\Transfer\GlueRequestTransfer $glueRequestTransfer
      *
      * @return \Generated\Shared\Transfer\GlueResponseTransfer
@@ -57,6 +62,11 @@ class PaymentTemplateConfigApiController extends AbstractController
     }
 
     /**
+     * Specification:
+     * - Is called after app has been disconnected from tenant.
+     * - Performs deletion of app configuration data on app side.
+     * - Any necessary integration-side cleanup (e.g. removing user accounts) should happen here.
+     *
      * @param \Generated\Shared\Transfer\GlueRequestTransfer $glueRequestTransfer
      *
      * @return \Generated\Shared\Transfer\GlueResponseTransfer
