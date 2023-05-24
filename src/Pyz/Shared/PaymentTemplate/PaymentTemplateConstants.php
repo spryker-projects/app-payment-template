@@ -12,7 +12,6 @@ interface PaymentTemplateConstants
     /**
      * @var string
      */
-//    public const APP_IDENTIFIER = 'af10ba73-179c-4998-8b07-016d37ed974a';
     public const APP_IDENTIFIER = 'PAYMENT_TEMPLATE:APP_IDENTIFIER';
 
     /**
