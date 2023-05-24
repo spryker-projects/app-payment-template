@@ -2,6 +2,7 @@
 
 use Monolog\Logger;
 use Pyz\Shared\Console\ConsoleConstants;
+use Pyz\Shared\PaymentTemplate\PaymentTemplateConstants;
 use Pyz\Shared\Scheduler\SchedulerConfig;
 use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
@@ -141,3 +142,8 @@ $config[SecretsManagerAwsConstants::SECRETS_MANAGER_AWS_REGION] = getenv('AWS_DE
 // can be removed after adding AWS SecretsManagers IAM roles creation in PaaS
 $config[SecretsManagerAwsConstants::SECRETS_MANAGER_AWS_ACCESS_KEY] = getenv('AWS_SECRETS_MANAGER_ACCESS_KEY_ID');
 $config[SecretsManagerAwsConstants::SECRETS_MANAGER_AWS_ACCESS_SECRET] = getenv('AWS_SECRETS_MANAGER_SECRET_ACCESS_KEY');
+
+// >>> ACP
+$acpApplicationConfiguration = json_decode(html_entity_decode((string)getenv('SPRYKER_ACP_APPLICATION')), true);
+$config[PaymentTemplateConstants::APP_IDENTIFIER] = $acpApplicationConfiguration['PAYMENT_APP_TEMPLATE_IDENTIFIER'] ?? '';
+$config[PaymentTemplateConstants::APP_VERSION] = '0.1.0';

@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\PaymentTemplateConfig\Persistence;
 
+use Generated\Shared\Transfer\PaymentTemplateConfigCriteriaTransfer;
 use Generated\Shared\Transfer\PaymentTemplateConfigTransfer;
 
 interface PaymentTemplateConfigRepositoryInterface
@@ -17,4 +18,13 @@ interface PaymentTemplateConfigRepositoryInterface
      * @return \Generated\Shared\Transfer\PaymentTemplateConfigTransfer|null
      */
     public function findConfigByStoreReference(string $storeReference): ?PaymentTemplateConfigTransfer;
+
+    /**
+     * @param \Generated\Shared\Transfer\PaymentTemplateConfigCriteriaTransfer $paymentTemplateConfigCriteriaTransfer
+     *
+     * @return \Generated\Shared\Transfer\PaymentTemplateConfigTransfer|null
+     */
+    public function findConfig(
+        PaymentTemplateConfigCriteriaTransfer $paymentTemplateConfigCriteriaTransfer
+    ): ?PaymentTemplateConfigTransfer;
 }

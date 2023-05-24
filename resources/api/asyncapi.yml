@@ -1,18 +1,20 @@
 asyncapi: 2.2.0
 info:
-    title: 'Product AsyncAPI definition.'
+    title: 'Payment AsyncAPI definition.'
     version: 0.1.0
 channels:
-    product:
+    Payment:
         subscribe:
+            operationId: AuthorizePayment
             message:
                 oneOf:
-                    -   $ref: '#/components/messages/AuthorizePayment'
+                    - $ref: '#/components/messages/AuthorizePayment'
 
         publish:
+            operationId: PaymentAuthorized
             message:
                 oneOf:
-                    -   $ref: '#/components/messages/PaymentAuthorized'
+                    - $ref: '#/components/messages/PaymentAuthorized'
 
 components:
     messages:
@@ -20,7 +22,6 @@ components:
             x-spryker:
                 module: PaymentAppTemplate
             name: PaymentAuthorized
-            operationId: Payment
             summary: 'A payment has been authorized.'
             payload:
                 $ref: '#/components/schemas/PaymentAuthorized'
@@ -31,7 +32,6 @@ components:
             x-spryker:
                 module: PaymentAppTemplate
             name: AuthorizePayment
-            operationId: Payment
             summary: 'Authorize a payment.'
             payload:
                 $ref: '#/components/schemas/AuthorizePayment'

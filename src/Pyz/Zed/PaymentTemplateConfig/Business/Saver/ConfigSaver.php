@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\PaymentTemplateConfig\Business\Saver;
 
+use Generated\Shared\Transfer\PaymentTemplateConfigCriteriaTransfer;
 use Generated\Shared\Transfer\PaymentTemplateConfigResponseTransfer;
 use Generated\Shared\Transfer\PaymentTemplateConfigTransfer;
 use Pyz\Zed\PaymentTemplateConfig\Business\EncryptionConfigurator\TenantPropelEncryptionConfiguratorInterface;
@@ -67,8 +68,11 @@ class ConfigSaver implements ConfigSaverInterface
     ): PaymentTemplateConfigResponseTransfer {
         $this->tenantPropelEncryptionConfigurator->configurePropelEncryption($paymentTemplateConfigTransfer->getStoreReference());
 
-        $existedPaymentTemplateConfigTransfer = $this->paymentTemplateConfigRepository->findConfigByStoreReference(
-            $paymentTemplateConfigTransfer->getStoreReference(),
+        $paymentTemplateConfigCriteriaTransfer = (new PaymentTemplateConfigCriteriaTransfer())
+            ->setStoreReference($paymentTemplateConfigTransfer->getStoreReference());
+
+        $existedPaymentTemplateConfigTransfer = $this->paymentTemplateConfigRepository->findConfig(
+            $paymentTemplateConfigCriteriaTransfer,
         );
 
         if (!$existedPaymentTemplateConfigTransfer) {

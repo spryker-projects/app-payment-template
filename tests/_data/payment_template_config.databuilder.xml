@@ -4,12 +4,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="spryker:databuilder-01 http://static.spryker.com/databuilder-01.xsd"
 >
-    <transfer name="PaymentTemplateConfig">
+    <transfer name="PaymentTemplateConfig" strict="true">
         <property name="storeReference" dataBuilderRule="uuid()"/>
         <property name="paymentApiKey" dataBuilderRule="lexify('??????????')"/>
     </transfer>
 
-    <transfer name="DisconnectParameters">
+    <transfer name="DisconnectParameters" strict="true">
         <property name="storeReference" dataBuilderRule="uuid()"/>
     </transfer>
 </transfers>

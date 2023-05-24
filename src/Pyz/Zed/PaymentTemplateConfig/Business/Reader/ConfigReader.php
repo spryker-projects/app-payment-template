@@ -41,29 +41,30 @@ class ConfigReader implements ConfigReaderInterface
      *
      * @return \Generated\Shared\Transfer\PaymentTemplateConfigTransfer|null
      */
-    public function findConfigByStoreReference(
+    public function findConfig(
         PaymentTemplateConfigCriteriaTransfer $paymentTemplateConfigCriteriaTransfer
     ): ?PaymentTemplateConfigTransfer {
         $this->tenantPropelEncryptionConfigurator->configurePropelEncryption(
             $paymentTemplateConfigCriteriaTransfer->getStoreReference(),
         );
 
-        return $this->paymentTemplateConfigRepository->findConfigByStoreReference(
-            $paymentTemplateConfigCriteriaTransfer->getStoreReference(),
-        );
+        return $this->paymentTemplateConfigRepository->findConfig($paymentTemplateConfigCriteriaTransfer);
     }
 
     /**
      * @inheritDoc
      */
-    public function hasConfigForStoreReference(string $storeReference): bool
-    {
-        return $this->tenantPropelEncryptionConfigurator->withCurrentOrEmptyEncryptionKey(function () use ($storeReference) {
-            $found = $this->paymentTemplateConfigRepository->findConfigByStoreReference(
-                $storeReference,
-            );
+    public function hasConfig(
+        PaymentTemplateConfigCriteriaTransfer $paymentTemplateConfigCriteriaTransfer
+    ): bool {
+        return $this->tenantPropelEncryptionConfigurator->withCurrentOrEmptyEncryptionKey(
+            function () use ($paymentTemplateConfigCriteriaTransfer) {
+                $found = $this->paymentTemplateConfigRepository->findConfig(
+                    $paymentTemplateConfigCriteriaTransfer,
+                );
 
-            return $found !== null;
-        });
+                return $found !== null;
+            },
+        );
     }
 }

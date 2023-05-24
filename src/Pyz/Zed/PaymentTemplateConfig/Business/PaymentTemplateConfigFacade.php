@@ -31,7 +31,7 @@ class PaymentTemplateConfigFacade extends AbstractFacade implements PaymentTempl
      */
     public function findConfig(PaymentTemplateConfigCriteriaTransfer $paymentTemplateConfigCriteriaTransfer): ?PaymentTemplateConfigTransfer
     {
-        return $this->getFactory()->createConfigReader()->findConfigByStoreReference($paymentTemplateConfigCriteriaTransfer);
+        return $this->getFactory()->createConfigReader()->findConfig($paymentTemplateConfigCriteriaTransfer);
     }
 
     /**
@@ -67,6 +67,6 @@ class PaymentTemplateConfigFacade extends AbstractFacade implements PaymentTempl
      */
     public function hasConfig(PaymentTemplateConfigCriteriaTransfer $paymentTemplateConfigCriteriaTransfer): bool
     {
-        return $this->getFactory()->createConfigReader()->hasConfigForStoreReference($paymentTemplateConfigCriteriaTransfer->getStoreReferenceOrFail());
+        return $this->getFactory()->createConfigReader()->hasConfig($paymentTemplateConfigCriteriaTransfer);
     }
 }

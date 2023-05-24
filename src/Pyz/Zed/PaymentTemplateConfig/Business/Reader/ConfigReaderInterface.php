@@ -17,14 +17,16 @@ interface ConfigReaderInterface
      *
      * @return \Generated\Shared\Transfer\PaymentTemplateConfigTransfer|null
      */
-    public function findConfigByStoreReference(
+    public function findConfig(
         PaymentTemplateConfigCriteriaTransfer $paymentTemplateConfigCriteriaTransfer
     ): ?PaymentTemplateConfigTransfer;
 
     /**
-     * @param string $storeReference
+     * @param \Generated\Shared\Transfer\PaymentTemplateConfigCriteriaTransfer $paymentTemplateConfigCriteriaTransfer
      *
      * @return bool
      */
-    public function hasConfigForStoreReference(string $storeReference): bool;
+    public function hasConfig(
+        PaymentTemplateConfigCriteriaTransfer $paymentTemplateConfigCriteriaTransfer
+    ): bool;
 }

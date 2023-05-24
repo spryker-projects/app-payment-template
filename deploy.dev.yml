@@ -9,6 +9,8 @@ image:
     php:
         enabled-extensions:
             - blackfire
+    environment:
+        SPRYKER_ACP_APPLICATION: ''
 composer:
     mode: ''
     autoload: ''

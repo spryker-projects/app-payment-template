@@ -12,5 +12,16 @@ interface PaymentTemplateConstants
     /**
      * @var string
      */
-    public const APP_IDENTIFIER = 'af10ba73-179c-4998-8b07-016d37ed974a';
+//    public const APP_IDENTIFIER = 'af10ba73-179c-4998-8b07-016d37ed974a';
+    public const APP_IDENTIFIER = 'PAYMENT_TEMPLATE:APP_IDENTIFIER';
+
+    /**
+     * Specification:
+     * - Identifier of the Algolia application.
+     *
+     * @api
+     *
+     * @var string
+     */
+    public const APP_VERSION = 'PAYMENT_TEMPLATE:APP_VERSION';
 }
