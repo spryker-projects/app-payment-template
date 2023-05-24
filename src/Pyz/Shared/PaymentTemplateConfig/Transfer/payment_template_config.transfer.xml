@@ -13,7 +13,7 @@
         <property name="errorMessages" type="array" singular="errorMessage"/>
     </transfer>
 
-    <transfer name="PaymentTemplateConfigCriteria">
+    <transfer name="PaymentTemplateConfigCriteria" strict="true">
         <property name="storeReference" type="string"/>
     </transfer>
 

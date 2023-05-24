@@ -13,13 +13,6 @@ use Generated\Shared\Transfer\PaymentTemplateConfigTransfer;
 interface PaymentTemplateConfigRepositoryInterface
 {
     /**
-     * @param string $storeReference
-     *
-     * @return \Generated\Shared\Transfer\PaymentTemplateConfigTransfer|null
-     */
-    public function findConfigByStoreReference(string $storeReference): ?PaymentTemplateConfigTransfer;
-
-    /**
      * @param \Generated\Shared\Transfer\PaymentTemplateConfigCriteriaTransfer $paymentTemplateConfigCriteriaTransfer
      *
      * @return \Generated\Shared\Transfer\PaymentTemplateConfigTransfer|null

@@ -28,29 +28,6 @@ class PaymentTemplateConfigRepository extends AbstractRepository implements Paym
     }
 
     /**
-     * @param string $storeReference
-     *
-     * @return \Generated\Shared\Transfer\PaymentTemplateConfigTransfer|null
-     */
-    public function findConfigByStoreReference(string $storeReference): ?PaymentTemplateConfigTransfer
-    {
-        $paymentTemplateConfigQuery = $this->getFactory()->createPaymentTemplateConfigQuery();
-
-        $paymentTemplateConfigEntity = $paymentTemplateConfigQuery
-            ->filterByStoreReference($storeReference)
-            ->findOne();
-
-        if (!$paymentTemplateConfigEntity) {
-            return null;
-        }
-
-        return $this->paymentTemplateConfigMapper->mapPaymentTemplateConfigEntityToPaymentTemplateConfigTransfer(
-            $paymentTemplateConfigEntity,
-            new PaymentTemplateConfigTransfer(),
-        );
-    }
-
-    /**
      * @param \Generated\Shared\Transfer\PaymentTemplateConfigCriteriaTransfer $paymentTemplateConfigCriteriaTransfer
      *
      * @return \Generated\Shared\Transfer\PaymentTemplateConfigTransfer|null
