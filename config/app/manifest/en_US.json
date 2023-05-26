@@ -11,10 +11,16 @@
     "assets": [
         {
             "type": "icon",
-            "url": "/assets/img/algolia/logo.png"
+            "url": "https:\\/\\/cdn.dribbble.com\\/userupload\\/4049734\\/file\\/original-c4c801b6e18ed232b9c72fbc9fb0c19f.png?resize=400x0"
         }
     ],
-    "resources": [],
+    "resources": [
+        {
+            "title": "User Guide",
+            "url": "https://www.google.com/",
+            "type": "internal-documentation"
+        }
+    ],
     "pages": {},
     "labels": [],
     "businessModels": [

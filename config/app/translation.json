@@ -1,7 +1,7 @@
 {
     "widgetNotification_content": {
-        "en_US": "You can find all available widget types at <a target='_blank' href='https://docs.spryker.com/docs/acp/user/app-configuration.html#widget-catalog'></a>.",
-        "de_DE": "You can find all available widget types at <a target='_blank' href='https://docs.spryker.com/docs/acp/user/app-configuration.html#widget-catalog'></a>."
+        "en_US": "You can find all available widget types at <a target='_blank' href='https://docs.spryker.com/docs/acp/user/app-configuration.html#widget-catalog'>App configuration</a>.",
+        "de_DE": "You can find all available widget types at <a target='_blank' href='https://docs.spryker.com/docs/acp/user/app-configuration.html#widget-catalog'>App configuration</a>."
     },
     "configurations_fieldset_title": {
         "en_US": "Configurations",
@@ -11,7 +11,7 @@
         "en_US": "<p><b>Payment API key</b><span> - Used by Payment service provider to identify PSP account.</span></p>",
         "de_DE": "<p><b>Payment API key</b><span> - Used by Payment service provider to identify PSP account.</span></p>"
     },
-    "payment_app_paymentApiKey": {
+    "payment_app_paymentApiKey_title": {
         "en_US": "Payment API key",
         "de_DE": "Payment API key"
     },
