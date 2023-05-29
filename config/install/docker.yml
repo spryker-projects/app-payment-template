@@ -58,3 +58,7 @@ sections:
     scheduler-setup:
         scheduler-setup:
             command: 'vendor/bin/console scheduler:setup -vvv --no-ansi'
+
+    demodata:
+        import-demodata:
+            command: 'vendor/bin/console data:import --config=data/import/local/full_${SPRYKER_REGION}.yml'

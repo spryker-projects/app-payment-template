@@ -14,6 +14,11 @@ image:
             "pcre.jit": 0
             "opcache.revalidate_freq": 0
             "opcache.validate_timestamps": 1
+    environment:
+        SPRYKER_ACP_APPLICATION: '{
+                    "PAYMENT_TEMPLATE_APP_IDENTIFIER": "payment-template-identifier"
+                    "PAYMENT_TEMPLATE_API_KEY": "payment-template-api-key"
+                }'
 composer:
     mode: --ignore-platform-reqs
     autoload:
@@ -34,13 +39,12 @@ regions:
             GLOBAL:
                 services:
                     broker:
-                        namespace: global-docker
                     key_value_store:
-                        namespace: 1
+                        namespace: 1 # don't remove to avoid warnings on boot process
                     search:
-                        namespace: global_search
+                        namespace: empty # don't remove to avoid warnings on boot process
                     session:
-                        namespace: 1
+                        namespace: 1 # don't remove to avoid warnings on boot process
 groups:
     GLOBAL:
         region: GLOBAL
@@ -55,9 +59,6 @@ groups:
                 endpoints:
                     boffice.spryker.local:
                         store: GLOBAL
-                        services:
-                            session:
-                                namespace: 3
 services:
     database:
         engine: mysql
@@ -65,18 +66,8 @@ services:
         root:
             username: 'root'
             password: 'secret'
-    broker:
-        engine: rabbitmq
-        api:
-            username: 'spryker'
-            password: 'secret'
-    search:
-        engine: elastic
-        version: '7.10'
     scheduler:
         engine: jenkins
-    mail_catcher:
-        engine: mailhog
 
 docker:
     ssl:

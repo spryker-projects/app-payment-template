@@ -1,0 +1,43 @@
+{
+    "properties": {
+        "widgetNotification": {
+            "type": "string",
+            "widget": {
+                "id": "notification"
+            },
+            "notificationType": "info",
+            "background": "white",
+            "content": "widgetNotification_content"
+        },
+        "paymentApiKey": {
+            "type": "string",
+            "title": "payment_app_paymentApiKey_title",
+            "placeholder": "payment_app_paymentApiKey_placeholder",
+            "isRequired": true,
+            "isLockable": true,
+            "widget": {
+                "id": "textline"
+            }
+        }
+    },
+    "fieldsets": [
+        {
+            "id": "widgetNotifications",
+            "fields": [
+                "widgetNotification"
+            ],
+            "layout": "noLayout"
+        },
+        {
+            "id": "configurations",
+            "title": "configurations_fieldset_title",
+            "fields": [
+                "paymentApiKey"
+            ],
+            "hint": "configurations_hint"
+        }
+    ],
+    "required": [
+        "paymentApiKey"
+    ]
+}

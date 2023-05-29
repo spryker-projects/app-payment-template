@@ -12,6 +12,7 @@ use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\PropelOrm\PropelOrmConstants;
+use Spryker\Shared\SecretsManagerAws\SecretsManagerAwsConstants;
 
 // ############################################################################
 // ############################## DEVELOPMENT CONFIGURATION ###################
@@ -48,3 +49,16 @@ $config[ErrorHandlerConstants::ERROR_LEVEL] = getenv('SPRYKER_DEBUG_DEPRECATIONS
 
 $config[PropelOrmConstants::PROPEL_SHOW_EXTENDED_EXCEPTION] = true;
 $config[LogConstants::LOG_LEVEL] = getenv('SPRYKER_DEBUG_ENABLED') ? Logger::INFO : Logger::DEBUG;
+
+// >>> AWS config
+$awsEndpoint = 'http://localhost.localstack.cloud:4566';
+$awsAccountId = '000000000000';
+$awsRegion = 'eu-central-1';
+$awsAccessKeyId = 'test';
+$awsAccessKeySecret = 'test';
+
+// >>> SecretsManager AWS
+$config[SecretsManagerAwsConstants::SECRETS_MANAGER_AWS_ACCESS_KEY] = $awsAccessKeyId;
+$config[SecretsManagerAwsConstants::SECRETS_MANAGER_AWS_ACCESS_SECRET] = $awsAccessKeySecret;
+$config[SecretsManagerAwsConstants::SECRETS_MANAGER_AWS_REGION] = $awsRegion;
+$config[SecretsManagerAwsConstants::SECRETS_MANAGER_AWS_ENDPOINT] = $awsEndpoint;

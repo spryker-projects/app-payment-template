@@ -10,6 +10,10 @@ image:
         enabled-extensions:
             - blackfire
     environment:
+        SPRYKER_ACP_APPLICATION: '{
+                    "PAYMENT_TEMPLATE_APP_IDENTIFIER": "payment-template-identifier"
+                    "PAYMENT_TEMPLATE_API_KEY": "payment-template-api-key"
+                }'
 composer:
     mode: --no-dev
     autoload: --classmap-authoritative
@@ -33,11 +37,10 @@ regions:
             GLOBAL:
                 services:
                     broker:
-                        namespace: global-docker
                     key_value_store:
-                        namespace: 1
+                        namespace: 1 # don't remove to avoid warnings on boot process
                     search:
-                        namespace: global_search
+                        namespace: empty # don't remove to avoid warnings on boot process
 groups:
     GLOBAL:
         region: GLOBAL
@@ -58,39 +61,12 @@ services:
         endpoints:
             localhost:3306:
                 protocol: tcp
-    broker:
-        engine: rabbitmq
-        version: '3.9'
-        api:
-            username: 'spryker'
-            password: 'secret'
-        endpoints:
-            queue.spryker.local:
-            localhost:5672:
-                protocol: tcp
-    session:
-        engine: redis
-    key_value_store:
-        engine: redis
-        endpoints:
-            localhost:16379:
-                protocol: tcp
-    search:
-        engine: elastic
-        version: '7.10'
-        endpoints:
-            localhost:9200:
-                protocol: tcp
     scheduler:
         engine: jenkins
         version: '2.324'
         csrf-protection-enabled: true
         endpoints:
             scheduler.spryker.local:
-    mail_catcher:
-        engine: mailhog
-        endpoints:
-            mail.spryker.local:
     swagger:
         engine: swagger-ui
         endpoints:

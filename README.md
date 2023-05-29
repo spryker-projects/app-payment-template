@@ -1,5 +1,5 @@
 # app-payment-template
-Payment PBC application template
+Payment Application template
 
 [![Build Status](https://github.com/spryker-projects/app-payment-template-suite/workflows/CI/badge.svg)](https://github.com/spryker-projects/app-payment-template/actions?query=workflow%3ACI)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%208.1-8892BF.svg)](https://php.net/)
@@ -41,4 +41,18 @@ docker/sdk up -x
 ```bash
 #Run the entire test suite
 docker/sdk testing codecept run -c codeception.yml
+```
+
+## Application structure
+
+```
+|src
+|-Pyz
+|--Client
+|---SecretsManager - configuration for secrets provider
+|--Glue
+|---PaymentTemplateConfigApi - private API for application configuration
+|--Shared
+|--Zed
+|---PaymentTemplateConfig - business logic for application configuration data
 ```
