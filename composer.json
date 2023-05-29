@@ -42,7 +42,9 @@
         "spryker-sdk/architector": "dev-master as 0.1.x-dev",
         "spryker/architecture-sniffer": "^0.5.7",
         "spryker-sdk/security-checker": "^0.2.0",
-        "spryker/event-behavior": "^1.25"
+        "spryker/event-behavior": "^1.25",
+        "spryker-sdk/acp": "^0.3.0",
+        "spryker-sdk/async-api": "^0.2.9"
     },
     "autoload": {
         "psr-4": {

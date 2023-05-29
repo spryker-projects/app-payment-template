@@ -101,6 +101,12 @@ jobs:
             -   name: Run Security check
                 run: vendor/bin/console security:check
 
+            -   name: Validate App
+                run: vendor/bin/acp app:validate -m ./config/app/manifest/ -c ./config/app/configuration.json -t ./config/app/translation.json -vvv
+
+            -   name: Validate async-api schema file
+                run: vendor/bin/asyncapi schema:asyncapi:validate -vvv --asyncapi-file=resources/api/asyncapi.yml
+
     mariadb-alpine:
         name: "MariaDB / Alpine"
         strategy:
