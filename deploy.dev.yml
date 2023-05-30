@@ -1,0 +1,101 @@
+version: '0.1'
+
+namespace: spryker_app_payment_template
+tag: 'dev'
+
+environment: docker.dev
+image:
+    tag: spryker/php:${PHP_VERSION:-8.1}
+    php:
+        enabled-extensions:
+            - blackfire
+    environment:
+        SPRYKER_ACP_APPLICATION: ''
+composer:
+    mode: ''
+    autoload: ''
+
+assets:
+    mode: development
+
+regions:
+    GLOBAL:
+        services:
+            database:
+                database: global-docker
+                username: spryker
+                password: secret
+
+        stores:
+            GLOBAL:
+                services:
+                    broker:
+                    key_value_store:
+                        namespace: 1 # don't remove to avoid warnings on boot process
+                    search:
+                        namespace: empty # don't remove to avoid warnings on boot process
+groups:
+    GLOBAL:
+        region: GLOBAL
+        applications:
+            glue_backend_eu:
+                application: glue-backend
+                endpoints:
+                    glue-backend.app-payment.local:
+                        store: GLOBAL
+            boffice:
+                application: zed
+                endpoints:
+                    boffice.app-payment.local:
+                        store: GLOBAL
+
+services:
+    database:
+        engine: mysql
+        version: mariadb-10.4
+        root:
+            username: 'root'
+            password: 'secret'
+        endpoints:
+            localhost:3306:
+                protocol: tcp
+    scheduler:
+        engine: jenkins
+        version: '2.324'
+        csrf-protection-enabled: true
+        endpoints:
+            scheduler.app-payment.local:
+    swagger:
+        engine: swagger-ui
+        endpoints:
+            swagger.app-payment.local:
+    dashboard:
+        engine: dashboard
+        endpoints:
+            app-payment.local:
+
+docker:
+    ssl:
+        enabled: false
+        redirect: true
+
+    testing:
+        store: GLOBAL
+
+    debug:
+        enabled: true
+        xdebug:
+            enabled: true
+
+    mount:
+        native:
+            platforms:
+                - linux
+
+        docker-sync:
+            platforms:
+                - windows
+
+        mutagen:
+            platforms:
+                - macos

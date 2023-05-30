@@ -1,0 +1,29 @@
+namespace: PyzTest\Zed\PaymentTemplateConfig
+
+paths:
+    tests: .
+    data: _data
+    support: _support
+    output: _output
+
+coverage:
+    enabled: true
+    remote: false
+    whitelist: { include: ['../../../../src/Pyz/*/PaymentTemplateConfig/*.php'] }
+
+suites:
+    Business:
+        path: Business
+        actor: PaymentTemplateConfigBusinessTester
+        modules:
+            enabled:
+                - \SprykerTest\Shared\Testify\Helper\Environment
+                - \SprykerTest\Shared\Testify\Helper\ConfigHelper
+                - \SprykerTest\Service\Container\Helper\ContainerHelper
+                - \SprykerTest\Shared\Propel\Helper\ConnectionHelper
+                - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
+                - \SprykerTest\Shared\Testify\Helper\Environment
+                - \SprykerTest\Zed\Testify\Helper\Business\BusinessHelper
+                - \SprykerTest\Zed\Testify\Helper\Business\DependencyProviderHelper
+                - \PyzTest\Zed\PaymentTemplateConfig\Helper\PaymentTemplateConfigHelper
+                - \PyzTest\Zed\Testify\Helper\PropelEncryptionHelper

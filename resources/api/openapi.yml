@@ -1,0 +1,134 @@
+openapi: 3.0.0
+info:
+    version: 1.1.0
+    contact:
+        name: Spryker
+        url: 'https://apps.spryker.com/'
+        email: support@spryker.com
+    title: 'Spryker Payment App Template API'
+    license:
+        name: MIT
+servers:
+    -   url: 'http://glue-backend.payment-template.spryker.local/'
+        description: 'Local development endpoint'
+    -   url: 'https://api.payment-template-testing.aop.demo-spryker.com/'
+        description: 'Testing'
+    -   url: 'https://api.payment-template-staging.aop.demo-spryker.com/'
+        description: 'Staging'
+    -   url: 'https://api.payment-template.aop.spryker.com/'
+        description: 'Production'
+paths:
+    '/private/payment-template-config':
+        post:
+            summary: 'Saves or updates Payment App Template configuration between Tenant and Payment Template App.'
+            parameters:
+                -   $ref: '#/components/parameters/storeReference'
+            requestBody:
+                description: 'Provides configuration for Payment Template App.'
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/ConfigurationApiRequest'
+            responses:
+                200:
+                    description: 'Expected response to a valid request.'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ConfigurationApiResponse'
+                400:
+                    description: 'Bad request.'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ApiErrorMessages'
+                default:
+                    description: 'Expected response to a bad request.'
+                    content:
+                        text/plain:
+                            schema:
+                                type: string
+    '/private/disconnect':
+        post:
+            summary: 'Disconnects Payment Template App from a Tenants store.
+                      Finds Payment Template App configuration and removes it.'
+            parameters:
+                -   $ref: '#/components/parameters/storeReference'
+            responses:
+                204:
+                    description: 'App is disconnected.'
+                422:
+                    description: 'Unprocessable entity.'
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ApiErrorMessages'
+                default:
+                    description: 'Expected response to a bad request.'
+                    content:
+                        text/plain:
+                            schema:
+                                type: string
+
+components:
+    schemas:
+        ConfigurationApiRequest:
+            properties:
+                data:
+                    type: object
+                    required:
+                        - attributes
+                    properties:
+                        attributes:
+                            type: object
+                            required:
+                                - configuration
+                            properties:
+                                configuration:
+                                    description: 'Contains the JSON encoded configuration.'
+                                    type: string
+        ConfigurationApiResponse:
+            properties:
+                configuration:
+                    type: object
+                    properties:
+                        idPaymentAppTemplateConfig:
+                            type: integer
+                        storeReference:
+                            type: string
+                        paymentApiKey:
+                            type: string
+
+        ApiErrorMessages:
+            properties:
+                data:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/ApiErrorMessage'
+        ApiErrorMessage:
+            properties:
+                code:
+                    type: string
+                detail:
+                    type: string
+                status:
+                    type: string
+    parameters:
+        storeReference:
+            name: X-Store-Reference
+            in: header
+            required: true
+            description: 'Reference of the Tenants store.'
+            schema:
+                type: string
+            examples:
+                local_de:
+                    value: dev-de
+                    summary: DE store reference for local development
+                local_at:
+                    value: dev-at
+                    summary: AT store reference for local development
+                local_us:
+                    value: dev-us
+                    summary: US store reference for local development

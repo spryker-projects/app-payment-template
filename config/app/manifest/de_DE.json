@@ -1,0 +1,61 @@
+{
+    "name": "App Payment Template",
+    "provider": "Spryker",
+    "description": "App Payment Template",
+    "descriptionShort": "App Payment Template",
+    "url": "https://www.spryker.com",
+    "isAvailable": true,
+    "categories": [
+        "PAYMENT"
+    ],
+    "assets": [
+        {
+            "type": "icon",
+            "url": "https://cdn.dribbble.com/userupload/4049734/file/original-c4c801b6e18ed232b9c72fbc9fb0c19f.png?resize=400x0"
+        }
+    ],
+    "resources": [
+        {
+            "title": "User Guide",
+            "url": "https://docs.spryker.com/docs/pbc/all/pbc.html#spryker-pbcs",
+            "type": "internal-documentation"
+        }
+    ],
+    "pages": {
+        "Overview": []
+    },
+    "labels": [],
+    "businessModels": [
+        "B2C",
+        "B2B",
+        "B2C_MARKETPLACE",
+        "B2B_MARKETPLACE"
+    ],
+    "dependencies": [
+        {
+            "name": "spryker/store",
+            "version": "^1.17.0"
+        }
+    ],
+    "dialogs": {
+        "onSave": {
+            "type": "confirmation",
+            "title": "Proceed saving?",
+            "content": "Saving Payment connection credentials will add new payment method",
+            "buttons": {
+                "ok": "Save",
+                "cancel": "Cancel"
+            }
+        },
+        "onDisconnect": {
+            "type": "confirmation",
+            "title": "Disconnect application?",
+            "content": "Are you sure you want to disconnect this application? Your application settings will be reset.",
+            "buttons": {
+                "ok": "Disconnect",
+                "cancel": "Cancel"
+            }
+        }
+    },
+    "developedBy": "Spryker Systems GmbH"
+}
