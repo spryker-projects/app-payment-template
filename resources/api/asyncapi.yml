@@ -1,0 +1,95 @@
+asyncapi: 2.2.0
+info:
+    title: 'Payment AsyncAPI definition.'
+    version: 0.1.0
+channels:
+    Payment:
+        subscribe:
+            operationId: AuthorizePayment
+            message:
+                oneOf:
+                    - $ref: '#/components/messages/AuthorizePayment'
+
+        publish:
+            operationId: PaymentAuthorized
+            message:
+                oneOf:
+                    - $ref: '#/components/messages/PaymentAuthorized'
+
+components:
+    messages:
+        PaymentAuthorized:
+            x-spryker:
+                module: PaymentAppTemplate
+            name: PaymentAuthorized
+            summary: 'A payment has been authorized.'
+            payload:
+                $ref: '#/components/schemas/PaymentAuthorized'
+            headers:
+                $ref: '#/components/schemas/headers'
+
+        AuthorizePayment:
+            x-spryker:
+                module: PaymentAppTemplate
+            name: AuthorizePayment
+            summary: 'Authorize a payment.'
+            payload:
+                $ref: '#/components/schemas/AuthorizePayment'
+            headers:
+                $ref: '#/components/schemas/headers'
+
+    schemas:
+        PaymentAuthorized:
+            type: object
+            properties:
+                paymentId:
+                    type: string
+            required:
+                - paymentId
+
+        AuthorizePayment:
+            type: object
+            properties:
+                paymentId:
+                    type: string
+            required:
+                - paymentId
+
+        headers:
+            type: object
+            required:
+                - authorization
+                - timestamp
+                - correlationId
+                - storeReference
+                - event
+                - transferName
+                - publisher
+            properties:
+                authorization:
+                    type: string
+                    description: 'Authorization header for requesting a protected resource.'
+                timestamp:
+                    type: integer
+                    description: 'Timestamp when this message was created (microtime).'
+                correlationId:
+                    type: string
+                    description: 'Identifier of the current process.'
+                storeReference:
+                    type: string
+                    description: 'Identifier of a store for the triggered event.'
+                event:
+                    type: string
+                    description: 'Name of the current event.'
+                transferName:
+                    type: string
+                    description: 'Transfer name of the current event.'
+                publisher:
+                    type: object
+                    properties:
+                        appIdentifier:
+                            type: string
+                            description: 'Identifier of the app that triggered the event.'
+                        storeReference:
+                            type: string
+                            description: 'Identifier of a store that triggered the event.'

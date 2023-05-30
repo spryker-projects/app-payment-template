@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed"
+          xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd"
+          namespace="Orm\Zed\PaymentTemplateConfig\Persistence" package="src.Orm.Zed.PaymentTemplateConfig.Persistence">
+    <table name="spy_payment_template_config" identifierQuoting="true">
+        <column name="id_payment_template_config" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="store_reference" required="true" type="VARCHAR" size="255"/>
+        <column name="payment_api_key" required="true" type="VARBINARY"/>
+
+        <behavior name="encryption">
+            <parameter name="column_name_1" value="payment_api_key"/>
+        </behavior>
+
+        <unique name="spy_payment_template_config-unique-store_reference">
+            <unique-column name="store_reference"/>
+        </unique>
+
+        <behavior name="timestampable">
+            <parameter name="create_column" value="created_at"/>
+            <parameter name="update_column" value="updated_at"/>
+        </behavior>
+    </table>
+</database>
