@@ -33,6 +33,10 @@ sections:
         generate-glue-backend-ide-auto-completion:
             command: 'vendor/bin/console dev:ide-auto-completion:glue-backend:generate'
 
+    build-static-development:
+        skip-step:
+            command: 'if [ -d ../public/Acp/AppsGlue ]; then cp -r public/GlueBackend/assets ../public/Acp/AppsGlue/assets; fi'
+
     init-storages-per-region:
         propel-copy-schema:
             command: 'vendor/bin/console propel:schema:copy'
@@ -61,4 +65,4 @@ sections:
 
     demodata:
         import-demodata:
-            command: 'vendor/bin/console data:import --config=data/import/local/full_${SPRYKER_REGION}.yml'
+            command: 'vendor/bin/console data:import --config=data/import/local/full_app-payment-template.yml'
